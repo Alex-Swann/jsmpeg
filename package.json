@@ -1,0 +1,22 @@
+{
+  "name": "jsmpeg",
+  "version": "1.0.0",
+  "description": "1) Ensure you have brew installed ffmpeg, http-server and ws. 2) Run `node websocket-relay.js supersecret 8081 8082` to run stream and websocket server. 3) In a separate tab run `http-server` in the root directory to run the consumer server. 4) Run `ffmpeg -f avfoundation -framerate 30 -video_size 640x480 -i \"0:0\" -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 http://localhost:8081/supersecret` which streams the MAC camera to the stream server.",
+  "main": "n/a",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-Swann/jsmpeg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex-Swann/jsmpeg/issues"
+  },
+  "homepage": "https://github.com/Alex-Swann/jsmpeg#readme",
+  "dependencies": {
+    "ws": "^5.1.1"
+  }
+}

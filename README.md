@@ -1,3 +1,12 @@
+# For MAC testing
+
+1) Ensure you have brew installed ffmpeg and http-server.
+2) npm install
+3) Run `node websocket-relay.js supersecret 8081 8082` to run stream and websocket server.
+4) In a separate tab run `http-server` in the root directory to run the consumer server on port 8080.
+5) Run `ffmpeg -f avfoundation -framerate 30 -video_size 640x480 -i "0:0" -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 http://localhost:8081/supersecret` which streams the MAC camera to the stream server on port 8081. This stream then gets relayed to the websocket server on port 8082.
+6) Open `http://127.0.0.1:8080/view-stream.html`. The HTML template then consumes the stream from the websocket server on port 8082.
+
 # JSMpeg – MPEG1 Video & MP2 Audio Decoder in JavaScript
 
 JSMpeg is a Video Player written in JavaScript. It consists of an MPEG-TS demuxer, MPEG1 video & MP2 audio decoders, WebGL & Canvas2D renderers and WebAudio sound output. JSMpeg can load static videos via Ajax and allows low latency streaming (~50ms) via WebSockets.
@@ -58,7 +67,7 @@ var player = new JSMpeg.Player('video.ts' {loop: true, autoplay: true});
 
 or HTML
 ```html
-<div class="jsmpeg" data-url="video.ts" 
+<div class="jsmpeg" data-url="video.ts"
 	data-loop="true" data-autoplay="true"></div>
 ```
 
@@ -169,7 +178,7 @@ ffmpeg \
 	http://localhost:8081/supersecret
 ```
 
-You should now see a live webcam image in your browser. 
+You should now see a live webcam image in your browser.
 
 If ffmpeg failed to open the input video, it's likely that your webcam does not support the given resolution, format or framerate. To get a list of compatible modes run:
 
